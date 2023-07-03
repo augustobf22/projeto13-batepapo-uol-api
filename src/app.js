@@ -118,11 +118,14 @@ app.get("/messages", async (req, res) => {
 app.post("/status", async (req, res) => {
     const user = req.headers.user;
 
-    if (!user) return res.status(404);
+    if (!user) return res.status(404).send();
 
     try {
         const participant = await db.collection("participants").findOne({ name: user });
-        if (!participant) return res.status(404);
+        
+        if (!participant) {
+            return res.status(404).send();
+        };
 
         const { _id } = participant;
 
