@@ -26,11 +26,6 @@ const participantSchema = joi.object({
     name: joi.string().required()
 });
 
-const userSchema = joi.object({
-    name: joi.string().required(),
-    lastStatus: joi.number().required()
-});
-
 const msgSchema = joi.object({
     to: joi.string().required(),
     text: joi.string().required(),
